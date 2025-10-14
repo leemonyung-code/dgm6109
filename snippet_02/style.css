@@ -1,0 +1,67 @@
+/*
+ * Change the default font for the entire page.
+ * Resource: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
+*/
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.6; /* Improves readability */
+}
+
+/*
+ * Add space between the elements.
+ * Resource: https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom
+*/
+p,
+figure,
+h1, h2, h3, h4,
+ul, ol {
+    margin-bottom: 2em;
+}
+
+/*
+ * Add different hover and focus state styling to the in-text link.
+ * Resource: https://developer.mozilla.org/en-US/docs/Web/CSS/:hover
+ * Resource: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus
+*/
+a {
+    color: #007BFF; /* A clear blue for the default link state */
+    text-decoration: underline;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+a:hover,
+a:focus {
+    color: #CC0000; /* Changes to red on hover/focus */
+    text-decoration: none; /* Removes the underline on hover/focus */
+}
+
+/*
+ * Add different hover and focus state styling to the image inside a link.
+ * I select the `img` element that is a descendant of a link (`a`) during its hover/focus state.
+ * Resource: https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
+ * Resource: https://developer.mozilla.org/en-US/docs/Web/CSS/transition
+*/
+a img {
+    /* Add a transition to the image for a smooth effect */
+    transition: opacity 0.3s ease-in-out;
+    display: block; /* Removes extra space below the image */
+}
+
+a:hover img,
+a:focus img {
+    opacity: 0.75; /* Makes the image slightly transparent on hover/focus */
+    outline: 2px solid #007BFF; /* Adds a blue outline for focus visibility */
+    outline-offset: 3px;
+}
+
+
+/*
+ * 5. Shorten the default width of the paragraph and ensure it is responsive.
+ * Resource: https://developer.mozilla.org/en-US/docs/Web/CSS/max-width
+*/
+p {
+    max-width: 700px;
+    /* This centers the paragraph by making left and right margins automatic */
+    margin-left: auto;
+    margin-right: auto;
+}
