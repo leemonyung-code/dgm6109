@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>Project1 — Drawing Dog (final)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+
+<body>
+  <header>
+    <h2>Project 1 — Drawing (Limeng Yang)</h2>
+    <p>(After changing the value and/or mode, click Draw to update the image)</p>
+  </header>
+
+  <div id="controls">
+    <label for="xInput">DogX:</label>
+    <input id="xInput" type="number" value="100" />
+
+    <label for="yInput">DogY:</label>
+    <input id="yInput" type="number" value="50" />
+
+  <label for="modeSelect">Dog Mode:</label>
+  <select id="modeSelect">
+  <option value="normal">normal</option>
+  <option value="tongue_out">tongue out</option>
+  <option value="wag_tail">wag tail</option>
+  </select>
+
+
+    <button id="drawBtn">Draw！</button>
+  </div>
+
+
+  <div id="canvas" aria-label="drawing canvas">
+    <svg id="canvasSvg" width="500" height="500"></svg>
+  </div>
+
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="polygon.js"></script>
+  <script src="dog.js"></script> 
+  <script src="main.js"></script> </body>
+</html>
+</body>
+</html>
