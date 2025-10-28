@@ -1,0 +1,244 @@
+/* snippet 03*/
+/* base & mobile styles */
+body {
+    background-color: #000; /* pure balck background */
+    color: #fff;           /* pure white text */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* homepage (mobile) */
+.hero-section {
+    height: 50vh; /* shorter hero on mobile */
+    background-image: url('image/hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex; /* use flexbox for centering */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #333; /* subtle dividing line */
+    padding: 0 1rem; /* add horizontal padding */
+    box-sizing: border-box;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem; /* smaller font for mobile */
+    margin: 0;
+}
+
+.hero-content h2 {
+    font-size: 1.2rem; /* smaller font for mobile */
+    font-weight: 300;
+    color: #ccc; /* subtitle in light gray */
+}
+
+.search-container {
+    margin-top: 1.5rem;
+}
+
+.search-container input[type="text"] {
+    width: 90%; /* full width on mobile */
+    padding: 0.8rem 1rem;
+    background-color: rgba(255, 255, 255, 0.1); /* translucent input field */
+    border: 1px solid #555;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 4px;
+    box-sizing: border-box; /* include padding in width */
+}
+
+.search-container input[type="text"]::placeholder {
+    color: #888;
+}
+
+
+/* style guide (mobile) */
+.style-guide-container {
+    max-width: 100%; /* full width on mobile */
+    margin: 1rem auto;
+    padding: 0.5rem 1rem; /* add horizontal padding */
+    box-sizing: border-box;
+}
+
+.style-guide-container section {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #222;
+    padding-bottom: 1rem;
+}
+
+p a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+p a:hover {
+    text-decoration: underline;
+}
+
+/*  navigation (mobile)
+ using flexbox for vertical stack
+ ref: mdn web docs (flexbox)
+*/
+.nav-section {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    gap: 0.5rem; /* space between items */
+}
+
+.nav-button,
+.submit-button {
+    width: 100%; /* full-width buttons on mobile */
+    padding: 0.8rem 1rem;
+    margin: 0; /* reset margin (using gap) */
+    cursor: pointer;
+    font-size: 1rem; /* larger font for tapping */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* specific button styles */
+.nav-button {
+    background-color: transparent;
+    border: 1px solid #888;
+    color: #fff;
+}
+.nav-button:hover {
+    background-color: #333;
+    border-color: #fff;
+}
+
+.submit-button {
+    background-color: #000000; 
+    border: 1px solid;
+    color: #ffffff;
+}
+.submit-button:hover {
+    background-color: #5aa1f2;
+}
+
+
+/* image link & other elements (mobile-friendly) */
+/* (already responsive, no mobile-specific changes needed) */
+.linked-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #444;
+}
+
+.reference-card {
+    background-color: #111;
+    border: 1px solid #333;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+.reference-card img {
+    width: 100%;
+    display: block;
+}
+.card-tags {
+    padding: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #333;
+    color: #ccc;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+}
+
+/* visually hide label (for accessibility) */
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* --- interaction feedback (all screens) --- */
+
+.linked-image:hover {
+    opacity: 0.8;
+    border-color: #fff;
+}
+
+p a:focus,
+.nav-button:focus,
+.submit-button:focus,
+.search-container input[type="text"]:focus {
+    outline: 2px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+
+/* media queries */
+/* ref: mdn web docs (media query syntax) */
+/* desktop layout (1024px and up) */
+@media (min-width: 1024px) {
+    
+    /* reset hero styles for desktop */
+    .hero-section {
+        height: 60vh;
+        padding: 0; /* remove mobile padding */
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    /* reset search styles for desktop */
+    .search-container input[type="text"] {
+        width: 400px;
+    }
+
+    /* reset container styles for desktop */
+    .style-guide-container {
+        max-width: 1000px;
+        padding: 0.5rem;
+    }
+
+    /* * reset nav layout for desktop (flexbox)
+     * ref: css-tricks (a guide to flexbox)
+     */
+    .nav-section {
+        flex-direction: row; /* horizontal layout */
+        align-items: center; /* align items vertically */
+        flex-wrap: wrap; /* allow wrapping */
+        gap: 0.4rem; /* reduce gap */
+    }
+
+    .nav-button,
+    .submit-button {
+        width: auto; /* reset to auto width */
+        padding: 0.5rem 1rem; /* reset padding */
+        font-size: 0.9rem; /* reset font size */
+    }
+}
+
+
+/* 2. large screen layout (1920px and up) */
+@media (min-width: 1920px) {
+    
+    /* wider container for large screens */
+    .style-guide-container {
+        max-width: 1400px; 
+    }
+    
+    .hero-content h1 {
+        font-size: 5rem; /* larger font for hero */
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+}
