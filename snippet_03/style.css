@@ -1,0 +1,264 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000; /* pure balck background */
+    color: #fff;           /* pure white text */
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* homepage */
+.hero-section {
+    height: 60vh; /* occupy 60% of the window height */
+   background-image: url('image/hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex; /* use Flexbox for centering */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #333; /* subtle dividing line */
+}
+
+.hero-content h1 {
+    font-size: 2.5rem; /* Shrink font size */
+    margin: 2rem 1rem; /* Shrink margin */
+    font-style: italic;
+}
+
+.hero-content h2 {
+    font-size: 1.2rem; /* Shrink font size */
+    margin: 1rem; /* Shrink margin */
+    font-style: italic;
+    color: #ccc; 
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    max-width: 500px; 
+    margin: 2rem 1rem; /* (I also reduced the margin) */
+    flex-direction: column; /* New: Stack child elements vertically */
+    align-items: stretch; /* New: Make child elements stretch to full width */
+}
+
+
+.search-container input[type="text"] {
+    width: 100%; /* Occupy full spaces */
+    max-width: 400px; /* But no larger than 400 pixels */
+    flex-grow: 1; /*Let input occupy all remaining space.*/
+    padding: 0.8rem 1rem;
+    background-color: rgba(255, 255, 255, 0.4); /* translucent input field */
+    border: 1px solid #555;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 4px; /* Modified: All corners are 4px */
+    border-top-right-radius: 4px; /* Modified */
+    border-bottom-right-radius: 4px; /* Modified */
+    margin-bottom: 0.5rem; /* Added: Create some space between this and the button below */
+}
+
+.search-container input[type="text"]::placeholder {
+    color: #eaeaea;
+}
+
+
+/* Style Guide */
+.style-guide-container {
+    max-width: 1000px;
+    margin: 1rem auto;
+    padding: 0.5rem;
+}
+
+.style-guide-container section {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #222;
+    padding-bottom: 1rem;
+}
+
+p a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.nav-button {
+    background-color: transparent;
+    border: 1px solid #888;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    text-decoration: none;
+    /* Because “Explore,” “Learn,” and “Community” are now <a> tags,
+    browsers will automatically underline them,
+    which will break your button design.
+    So I use this line of code to hide them */
+    display: inline-block; /* Ensure proper padding and margin for the <a> tag. */
+}
+
+.nav-button:hover {
+    background-color: #333;
+    border-color: #fff;
+}
+
+.submit-button {
+    background-color: #000000; 
+    border: 1px solid;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+.submit-button:hover {
+    background-color: #5aa1f2;
+}
+
+
+/* Image Link */
+.linked-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #444;
+}
+
+/* Other Elements (Card & Tag) */
+.reference-card {
+    background-color: #111;
+    border: 1px solid #333;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.reference-card img {
+    width: 100%;
+    display: block;
+}
+
+.reference-card h4 {
+    font-weight: 500; 
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    margin: 0;
+}
+
+.film-title {
+    font-style: italic;
+} /* Make sure that only the title of the film is Italic, not all of h4 */
+
+.card-tags {
+    padding: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #333;
+    color: #ccc;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    font-style: italic;
+}
+
+
+/* --- Interaction Feedback (for Rubric) --- */
+
+/* 1. Add hover effect for linked image */
+.linked-image:hover {
+    opacity: 0.8;
+    border-color: #fff;
+}
+
+.card-link {
+    text-decoration: none;
+    color: #fff; 
+    display: block;  
+    margin-bottom: 1rem;  
+}
+
+/* 2. Add focus states for accessibility */
+a:focus,
+.nav-button:focus,
+.submit-button:focus,
+.search-container input[type="text"]:focus {
+    outline: 2px solid #4a90e2;
+}
+
+.search-container .nav-button {
+    width: 100%;
+}
+
+/* * Desktop Layout: 1024px and above
+ *  (Reference: Assignment 3 Instructions)
+*/
+@media (min-width: 1024px) {
+
+    /* 1. Restore Hero title to original size */
+    .hero-content h1 {
+        font-size: 4rem;
+        margin: 6rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+        margin: 5rem;
+    }
+
+    /* 2. Restore the search box to a horizontal layout */
+    .search-container {
+        flex-direction: row; /* Change back to horizontal */
+        align-items: center; /* (Reset align-items) */
+        margin: 5rem; /* (Restore original margin) */
+    }
+
+    /* 3. Restore search button width and corners */
+    .search-container .nav-button {
+        width: auto; /* Revert to auto width */
+    }
+
+    .search-container input[type="text"] {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: 0; /* (Remove mobile margin) */
+    }
+
+    /* * 4. (Core) Display “Explore” cards side-by-side 
+     * Use Flexbox here 
+    */
+    .card-container {
+        display: flex;
+        gap: 1.5rem; /* Add spacing between cards */
+    }
+
+    /* (Optional) Make cards evenly distribute space in flex container */
+    .card-container .card-link {
+        flex: 1;
+    }
+}
+
+/* * Large Screen Layout: 1920px and above
+ *  (Reference: Assignment 3 instructions)
+*/
+@media (min-width: 1920px) {
+
+    /* 1. Make the main content container wider */
+    .style-guide-container {
+        max-width: 1400px;
+    }
+
+    /* 2. (Optional) Increase Hero heading size */
+    .hero-content h1 {
+        font-size: 5rem;
+    }
+}
