@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HW8: Three Visualization Proposals</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .proposal {
+            margin-bottom: 2.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Visualization Proposals</h1>
+
+    <h2>Name: Limeng Yang</h2>
+    <p>The data I collected is about the effect of different study methods on memory. I tracked several key variables to explore the relationships between them.</p>
+    <ul>
+        <li><b>Data Source:</b> (Briefly describe how you collected the data here)</li>
+        <li><b>Main Hypothesis:</b> My initial hypothesis is that confidence level, study time, and study method may all impact the delayed recall score.</li>
+    </ul>
+
+    <hr>
+
+    <div class="proposal">
+        <h2>Sketch 1: Bubble Plot</h2>
+        
+        <p><strong>Hypothesis:</strong> As my self-rated confidence (confidence) increases, my delayed recall score (delayedRecallScore) increases. In addition, study time (studyTime) and study method (method) might also positively affect the score.</p>
+        
+        <p><strong>View Sketch:</strong> <a href="sketch1.pdf">sketch1.pdf</a></p>
+        
+        <p><strong>Data Elements Used:</strong></p>
+        <ul>
+            <li>confidence</li>
+            <li>delayedRecallScore</li>
+            <li>studyTime</li>
+            <li>method</li>
+        </ul>
+
+        <p><strong>Units and Approximate Range:</strong></p>
+        <ul>
+            <li>Confidence (confidence): 0-10 rating, range [7.0 - 8.5]</li>
+            <li>Delayed Recall Score (delayedRecallScore): 0-15 rating, range [7 - 12]</li>
+            <li>Study Time (studyTime): minutes, range [18 - 33]</li>
+            <li>Study Method (method): Categorical (4 types: spaced repetition, massed practice, elaborative encoding, mnemonic imagery)</li>
+        </ul>
+
+        <p><strong>Data Representation:</strong></p>
+        <ul>
+            <li>X-Axis: confidence</li>
+            <li>Y-Axis: delayedRecallScore</li>
+            <li>Circle Size: studyTime</li>
+            <li>Circle Color: method</li>
+        </ul>
+
+    </div>
+
+    <hr>
+
+    <div class="proposal">
+        <h2>Sketch 2: (Grouped Scatterplot)</h2>
+        
+        <p><strong>Question:</strong> Which study method (method) has the greatest impact on the delayed recall score (delayedRecallScore)?</p>
+            
+        <p><strong>View Sketch:</strong> <a href="sketch2.pdf">sketch2.pdf</a></p>
+
+        <p><strong>Data Elements Used:</strong></p>
+        <ul>
+            <li>method</li>
+            <li>delayedRecallScore</li>
+            <li>studyTime</li>
+            </ul>
+
+        <p><strong>Units and Approximate Range:</strong></p>
+        <ul>
+            <li>Study Method (method): Categorical (4 types)</li>
+            <li>Delayed Recall Score (delayedRecallScore): 0-15 rating, range [7 - 12]</li>
+            <li>Study Time (studyTime): minutes, range [18 - 33]</li>
+        </ul>
+
+        <p><strong>Data Representation:</strong></p>
+        <ul>
+            <li>X-Axis: method (Four separate categorical "lanes")</li>
+            <li>Y-Axis: delayedRecallScore</li>
+            <li>Circle Size: studyTime</li>
+        </ul>
+
+    </div>
+
+    <hr>
+
+    <div class="proposal">
+        <h2>Sketch 3: (e.g., Glyph Chart)</h2>
+        
+        <p><strong>Question:</strong> How can all four data dimensions (method, time, confidence, score) be visualized for individual comparison without using a traditional axis-based layout?</p>
+        
+        <p><strong>View Sketch:</strong> <a href="sketch3.pdf">sketch3.pdf</a></p>
+        
+        <p><strong>Data Elements Used:</strong> (All)</p>
+        <ul>
+            <li>method</li>
+            <li>delayedRecallScore</li>
+            <li>studyTime</li>
+            <li>confidence</li>
+        </ul>
+
+        <p><strong>Units and Approximate Range:</strong> (Same as Sketch 1)</p>
+        
+        <p><strong>Data Representation:</strong> (This is an example, you can design your own)</p>
+        <ul>
+            <li>Base Shape: method (Circle = Spaced repetition / Trapezium = Elaborative encoding / Triangle = Mnemonic Imagery / Rectangle = Massed practice)</li>
+            <li>Shape Size: studyTime</li>
+            <li>Fill Color: delayedRecallScore (cold to warm = low to high)</li>
+            <li>Stroke Thickness: confidence</li>
+        </ul>
+
+    </div>
+
+</body>
+</html>
