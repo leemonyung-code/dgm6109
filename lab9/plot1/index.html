@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lab 9 - Plot 1: Confidence vs. Recall</title>
+    <script src="d3.min.js"></script>
+    <style>
+        /* This style block is just to make the page look nice */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0 auto; 
+            max-width: 800px;
+            line-height: 1.5;
+        }
+        h1, h2 { text-align: center; }
+        #canvas {
+            display: block;
+            margin: 0 auto;
+        }
+        .description {
+            margin-top: 1em;
+            padding: 1em;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="canvas"></div>
+        
+        <h1>Plot 1: Confidence vs. Delayed Recall by Method and Time</h1>
+        
+        <p style="text-align: center;">
+            <strong>Hypothesis:</strong> As my self-rated confidence (0-10) increases, my delayed recall score increases.
+            <br>
+            <strong>In addition:</strong> Study time (circle size) and study method (color) are shown to explore other potential correlations.
+        </p>
+
+        <div class="description">
+            <h3>Reason Why This is One of My Best Scatterplots</h3>
+            <p>
+                This visualization effectively displays four different data properties (confidence, recall score, study time, and method) in a single, clear chart. It directly tests my primary hypothesis by plotting confidence on the X-axis and recall on the Y-axis. 
+            </p>
+            <p>
+                By using color for 'method' and circle size for 'studyTime', it allows for a deeper analysis of secondary factors. For example, we can look to see if one study method (a specific color) clusters in the high-confidence, high-recall area.
+            </p>
+            <p>
+                Technically, this plot also correctly uses Array.sort() to draw the largest circles first. This prevents smaller data points from being hidden behind larger ones and significantly improves the chart's legibility.
+            </p>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script> 
+</html>

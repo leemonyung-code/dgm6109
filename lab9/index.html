@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Limeng Yang - Lab 9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold; 
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .explanation {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lab #9: My Best 2 Scatterplots</h1>
+        <p><strong>Name:</strong> Limeng Yang</p>
+
+        <hr>
+
+        <h2>My Visualizations</h2>
+        <p>Here are the links to my two best scatterplots for this assignment:</p>
+        <ul>
+            <li>
+                <a href="./plot1">Plot 1: Confidence vs. Delayed Recall</a>
+            </li>
+            <li>
+                <a href="./plot2">Plot 2: Study Time vs. Immediate Recall (Filtered)</a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <div class="explanation">
+            <h2>Use of Array.sort() and Array.filter()</h2>
+            
+            <h3>Array.sort() (Used in Plot 1)</h3>
+            <p>
+                I used Array.sort() in my first plot, which is an adaptation of my Lab 8 bubble chart.
+                The sort function is used on the dataset right before drawing the circles.
+            </p>
+            <p>
+                <strong>Effect:</strong> I sorted the data based on studyTime in <strong>descending order</strong> (from largest to smallest). 
+                This ensures that the largest circles (representing the most study time) are drawn first, 
+                and the smallest circles are drawn last (on top). This prevents small data points from
+                being hidden behind larger ones, which makes the visualization much clearer. 
+                This was very useful for legibility.
+            </p>
+
+            <h3>Array.filter() (Used in Plot 2)</h3>
+            <p>
+                I used Array.filter() in my second plot to explore a specific part of my original 
+                hypothesis from my data. My original hypothesis was about comparing 
+                "spaced repetition" and "massed practice".
+            </p>
+            <p>
+                <strong>Effect:</strong> The filter function creates a new array that <strong>only</strong> includes
+                data points where the method is either "spaced repetition" or "massed practice".
+                It filters out "elaborative encoding" and "mnemonic imagery".
+                This was extremely useful because it decluttered the visualization and allowed me to
+                do a direct comparison between the two methods I was most interested in, 
+                making the chart much more focused.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

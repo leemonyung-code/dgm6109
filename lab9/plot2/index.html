@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lab 9 - Plot 2: Time vs. Recall (Filtered)</title>
+    <script src="d3.min.js"></script>
+    <style>
+        /* This style block is just to make the page look nice */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0 auto; 
+            max-width: 800px;
+            line-height: 1.5;
+        }
+        h1, h2 { text-align: center; }
+        #canvas {
+            display: block;
+            margin: 0 auto;
+        }
+        .description {
+            margin-top: 1em;
+            padding: 1em;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="canvas"></div>
+        
+        <h1>Plot 2: Study Time vs. Delayed Recall (Filtered)</h1>
+        
+        <p style="text-align: center;">
+            <strong>Question:</strong> When comparing *only* "Spaced Repetition" and "Massed Practice", does study time have a clear effect on delayed recall?
+            <br>
+            <strong>Hypothesis (from Lab 7):</strong> As study time increases, delayed recall score increases.
+        </p>
+
+        <div class="description">
+            <h3>Reason Why This is One of My Best Scatterplots</h3>
+            <p>
+                This visualization is a direct and focused exploration of my original hypothesis.
+                It uses Array.filter() to remove the "noise" from the "elaborative encoding" and "mnemonic imagery" methods.
+                This allows for a much cleaner, direct comparison between the two methods I was most interested in.
+            </p>
+            <p>
+                By plotting Study Time (X-axis) against Delayed Recall (Y-axis) and using Color (the 3rd property) to distinguish the two methods, I can easily look for two separate clusters or trends. This helps answer a more specific question: "Does the effect of study time "depend" on the method?"
+                This plot is more focused than Plot 1 and does a better job of investigating a specific, comparative question.
+            </p>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script> 
+</html>
