@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Phase 3b Term Project Sketches (final)</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 2em; max-width: 800px; }
+        h1 { color: #333; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
+        h2 { color: #555; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        .proposal { margin-bottom: 2.5em; }
+        li { margin-bottom: 0.5em; }
+    </style>
+</head>
+
+<body>
+
+    <h1>Phase 3b Term Project Sketches (final)</h1>
+
+    <h2>Data Description</h2>
+    <p>The data I collected is about the effect of different study methods on memory. I tracked several key variables to explore the relationships between them.</p>
+    <ul>
+        <li><b>Main Hypothesis:</b> My initial hypothesis is that confidence level, study time, and study method may all impact the delayed recall score.</li>
+    </ul>
+
+    <hr>
+
+    <div class="proposal">
+        <h2>Sketch 1: Bubble Plot</h2>
+        <p><strong>Hypothesis:</strong> As my self-rated confidence increases, my delayed recall score increases.</p>
+        <p><strong>View Sketch:</strong> <a href="sketch1.pdf">sketch1.pdf</a></p>
+        <p><strong>Data Representation:</strong></p>
+        <ul>
+            <li>X-Axis: confidence (0-10 rating)</li>
+            <li>Y-Axis: delayedRecallScore (0-15 rating)</li>
+            <li>Size: studyTime (18-33 mins)</li>
+            <li>Color: method (4 categories)</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="proposal">
+        <h2>Sketch 2: Grouped Scatterplot</h2>
+        <p><strong>Question:</strong> Which study method has the greatest impact on the delayed recall score?</p>
+        <p><strong>View Sketch:</strong> <a href="sketch2.pdf">sketch2.pdf</a></p>
+        <p><strong>Units and Approximate Range:</strong></p>
+        <ul>
+            <li><strong>Method:</strong> Categorical (4 types)</li>
+            <li><strong>Delayed Recall Score:</strong> 0-15 rating (Range: 7-12)</li>
+            <li><strong>Study Time:</strong> Minutes (Range: 18-33)</li>
+        </ul>
+        <p><strong>Data Representation:</strong></p>
+        <ul>
+            <li>X-Axis: method (Categorical lanes)</li>
+            <li>Y-Axis: delayedRecallScore</li>
+            <li>Size: studyTime</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="proposal">
+        <h2>Sketch 3: Parallel Coordinates Plot</h2>
+        <p><strong>Question:</strong> Is there a consistent trend or correlation across study time, confidence, and recall score for specific study methods? This chart helps analyze the multivariate relationship simultaneously.</p>
+        <p><strong>View Sketch:</strong> <a href="sketch3.pdf">sketch3.pdf</a></p>
+        
+        <p><strong>Units and Approximate Range:</strong></p>
+        <ul>
+            <li><strong>Method:</strong> Categorical (4 types)</li>
+            <li><strong>Delayed Recall Score:</strong> 0-15 rating (Range: 7-12)</li>
+            <li><strong>Study Time:</strong> Minutes (Range: 18-33)</li>
+            <li><strong>Confidence:</strong> 0-10 rating (Range: 7.0-8.5)</li>
+        </ul>
+        
+        <p><strong>Data Representation:</strong></p>
+        <ul>
+            <li><strong>Axes:</strong> Four vertical axes representing Method, Confidence, Study Time, and Recall Score.</li>
+            <li><strong>Lines:</strong> Each line represents one study session connecting the four axes.</li>
+            <li><strong>Color:</strong> Lines are colored by Method to distinguish groups.</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="credits">
+        <h2>Design Resources & Credits</h2>
+        <ul>
+            <li>
+                <strong>The Data Visualisation Catalogue</strong> (https://datavizcatalogue.com): 
+                Used to research chart types for "Comparing" distributions. This verified that the <em>Beeswarm Plot</em> (Sketch 2) is suitable for comparing my categorical method data against recall scores.
+            </li>
+            <li>
+                <strong>From Data to Viz</strong> (https://www.data-to-viz.com): 
+                Used the decision tree for "Multivariate" data. This guided the decision to use a <em>Parallel Coordinates Plot</em> (Sketch 3) to visualize the relationships between all four variables (Method, Time, Confidence, Score) simultaneously, resolving the analyzability issues of my previous draft.
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
