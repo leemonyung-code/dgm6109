@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta description for SEO and rubric requirements -->
+    <meta name="description" content="A curated library of photographic and cinematic stills for artists and designers.">
+    <title>Look Reference</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700;1,800&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER / HERO SECTION -->
+    <header class="hero-section">
+        <div class="hero-bg"></div> 
+        <div class="hero-overlay"></div>
+
+        <nav class="top-nav">
+            <a href="#" class="user-pill">
+                <div class="user-avatar-placeholder"></div>
+                Log in / Sign up
+            </a>
+            <div class="menu-dots" aria-label="Menu">•••</div>
+        </nav>
+
+        <div class="hero-content">
+            <h1 class="hero-title">Look Reference</h1>
+            <h2 class="hero-subtitle">Discover the images you're looking for</h2>
+
+            <div class="search-bar-wrapper">
+                <!-- Visually hidden label for accessibility/validation -->
+                <label for="site-search" class="visually-hidden">Search for reference images</label>
+                <input type="text" id="site-search" class="search-input" placeholder="eg. color, day/night">
+                <button class="search-btn" type="button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION & FILTERS -->
+    <section class="nav-section" aria-label="Main Navigation">
+        <div class="nav-row">
+            <a href="#" class="nav-pill-primary">Explore</a>
+            <a href="#" class="nav-pill-primary">Learn</a>
+            <a href="#" class="nav-pill-primary">Community</a>
+            <a href="#" class="nav-pill-primary submit-pill">Submit Your Work</a>
+        </div>
+        
+        <div class="nav-row">
+            <span class="category-label">By Categories ></span>
+            <button class="nav-pill-secondary">Composition</button>
+            <button class="nav-pill-secondary">Color</button>
+            <button class="nav-pill-secondary">Director</button>
+            <button class="nav-pill-secondary">Time of Day</button>
+            <button class="nav-pill-secondary">INT/EXT</button>
+        </div>
+    </section>
+
+    <!-- GALLERY GRID -->
+    <main class="gallery-container">
+        <h2 class="visually-hidden">Image Gallery</h2>
+        
+        <div class="gallery-grid">
+            
+            <!-- Card 1: Interstellar -->
+            <!-- 关键点：data-key="interstellar" 必须和 main.js 里的名字一样 -->
+            <article class="gallery-card" data-key="interstellar" tabindex="0">
+                <div class="gallery-img-wrapper">
+                    <!-- 在这里修改第1张卡片的图片 -->
+                    <img src="image/sample-2.jpg" alt="Cinematic still from Interstellar" onerror="this.src='https://placehold.co/600x400/111/444?text=Sample+Image'">
+                </div>
+                <div class="card-meta">
+                    <span class="film-name">Interstellar (2014)</span>
+                    <div class="tag-row">
+                        <span class="mini-tag">Christopher Nolan</span>
+                        <span class="mini-tag">Sci-Fi</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2: Portrait -->
+            <article class="gallery-card" data-key="portrait" tabindex="0">
+                <div class="gallery-img-wrapper">
+                    <img src="image/IMG_6339.jpg" alt="Portrait of a Lady on Fire" onerror="this.src='https://placehold.co/600x400/222/555?text=Image+Missing'">
+                </div>
+                <div class="card-meta">
+                    <span class="film-name">Portrait of a Lady on Fire (2019)</span>
+                    <div class="tag-row">
+                        <span class="mini-tag">Céline Sciamma</span>
+                        <span class="mini-tag">Night</span>
+                        <span class="mini-tag">Warm</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3: Budapest (Placeholder) -->
+            <article class="gallery-card" data-key="budapest" tabindex="0">
+                <div class="gallery-img-wrapper">
+                    <img src="image/budapest.png" alt="Grand Budapest Hotel">
+                </div>
+                <div class="card-meta">
+                    <span class="film-name">The Grand Budapest Hotel (2014)</span>
+                    <div class="tag-row">
+                        <span class="mini-tag">Wes Anderson</span>
+                        <span class="mini-tag">Symmetry</span>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Card 4: Blade Runner 2049 -->
+            <article class="gallery-card" data-key="placeholder4" tabindex="0">
+                <div class="gallery-img-wrapper">
+                    <img src="image/IMG_0079.JPG" alt="Blade Runner 2049">
+                </div>
+                <div class="card-meta">
+                    <span class="film-name">Blade Runner 2049 (2019)</span>
+                    <div class="tag-row">
+                        <span class="mini-tag">Denis Villeneuve</span>
+                        <span class="mini-tag">Sci-Fi</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Look Reference</h3>
+                <p>A curated library designed for artists, designers, and cinematographers to find high-quality visual references focusing on composition, lighting, and mood.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Contact & Social</h4>
+                <ul>
+                    <li><a href="mailto:contact@lookreference.com">Contact Us</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Look Reference. All rights reserved. Student Project.
+        </div>
+    </footer>
+
+    <!-- DETAIL MODAL -->
+    <div id="detailModal" class="modal-overlay" aria-hidden="true">
+        <button class="modal-close" id="closeBtn" aria-label="Close details"> < Back</button>
+        
+        <div class="modal-content">
+            <div class="modal-image-container">
+                <img id="modalImg" src="" alt="Detail View">
+            </div>
+            
+            <div class="image-overlay-title" id="modalTitle">Film Title</div>
+
+            <div class="info-card">
+                <h3>Detailed Info</h3>
+                <div class="info-row">
+                    <span class="info-label">Color:</span>
+                    <span class="info-value" id="modalColor">Wait for data...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Director:</span>
+                    <span class="info-value" id="modalDirector">Wait for data...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Composition:</span>
+                    <span class="info-value" id="modalComp">Wait for data...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Time of Day:</span>
+                    <span class="info-value" id="modalTime">Wait for data...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">INT/EXT:</span>
+                    <span class="info-value" id="modalLoc">Wait for data...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="main.js"></script>
+</body>
+</html>
