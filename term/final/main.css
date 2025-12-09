@@ -1,0 +1,74 @@
+/* Main CSS
+   Based on the term project framework starter, adapted for clarity.
+*/
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 20px;
+    background-color: #dbdbdb;
+}
+
+/* Container for the SVG and the text */
+#container {
+    margin: 0 auto;
+    background-color: rgb(179, 197, 199);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(52, 52, 52, 0.1);
+    /* Max width matched to SVG width in JS */
+    max-width: 1200px; 
+}
+
+/* Center the canvas (SVG) */
+#canvas {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Styling for the text sections */
+.content-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.info-box {
+    background-color: #f9f9f9;
+    border-left: 5px solid #333;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h3 {
+    margin-top: 0;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* D3 Specific Styles */
+.axisLabel {
+    font-weight: bold;
+    fill: #333;
+}
+
+.axis text {
+    font-size: 12px;
+}
+
+.axis path,
+.axis line {
+    stroke: #333;
+}
+
+/* Add hover effect for data points */
+.datapoint:hover {
+    stroke-width: 2px;
+    fill-opacity: 1;
+    cursor: pointer;
+}
