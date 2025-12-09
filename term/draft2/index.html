@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- 
+        Term Project Draft 1
+        Title summarizes the project goal clearly as per Rubric.
+    -->
+    <title>Study Time vs. Delayed Recall Analysis - Limeng Yang</title>
+    
+    <!--
+        The version of D3 included in this project is the version that you must use for your term project.
+        Using local d3.min.js (v5.12) as required.
+    -->
+    <script src="d3.min.js"></script>
+
+    <!--
+        Link to the CSS file for styling.
+    -->
+    <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+    <div id="container">
+        <!--
+            Canvas for the D3 visualization.
+            Fixed size (controlled in CSS/JS) to fit in reasonable window size.
+        -->
+        <div id="canvas"></div>
+        
+        <!-- 
+            Required Explanatory Text Section 
+            Includes: Title, Question/Hypothesis, Data Overview, and Conclusion.
+        -->
+        <div class="content-section">
+            <h1>Visualization: Study Time vs. Delayed Recall</h1>
+            
+            <!-- Hypothesis/Question -->
+            <div class="info-box">
+                <h3>Hypothesis & Question</h3>
+                <p>
+                    <strong>Question:</strong> How does different study method and the duration of a study time affect my performance to recall vocabs 24 hours later?
+                </p>
+                <p>
+                    <strong>Hypothesis:</strong> I hypothesize that there will be a positive correlation between study time and delayed recall score. However, I also predict that active study methods (like Mnemonic Imagery) will get higher retention rates than passive methods (like Massed Practice), regardless of the time spent.
+                </p>
+            </div>
+
+            <div class="info-box">    
+                <h3>Data Overview</h3>
+                <p>
+                    The data presented here was collected over a period of 4 weeks (October 1st to October 28th, 2025). 
+                    Each data point represents a daily study session.
+                </p>
+                <ul>
+                    <li><strong>Collection Frequency:</strong> Once per day.</li>
+                    <li><strong>Key Variables:</strong>
+                        <ul>
+                            <li><strong>Study Time:</strong> Duration of the session in minutes (X-axis).</li>
+                            <li><strong>Delayed Recall Score:</strong> A test score out of 15 points, taken 24 hours after studying (Y-axis).</li>
+                            <li><strong>Method:</strong> The technique used, represented by color.</li>
+                            <li><strong>Self-Rated Confidence:</strong> A score (7-8.5) representing how confident I felt, represented by <strong>circle size</strong> (larger circles = higher confidence).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Completeness:</strong> The dataset includes 28 consecutive days of records, satisfying the requirement for 4+ weeks of data.</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3>Conclusion</h3>
+                <p>
+                    Based on the visualization, there appears to be a general positive correlation between study time and delayed recall score. 
+                    However, the method of study plays a significant role. "Massed Practice" data points (orange) tend to cluster lower on the Y-axis. 
+                    Additionally, larger circles (higher confidence) often correlate with higher Recall Scores, suggesting that my self-assessment of learning quality is generally accurate.
+                    "Mnemonic Imagery" (red) shows both high scores and larger circle sizes, indicating high effectiveness and confidence.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+<!--
+    Main JavaScript file containing D3 logic.
+-->
+<script src="main.js"></script>
+</html>
