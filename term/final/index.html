@@ -3,21 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- 
-        Term Project Draft 1
-        Title summarizes the project goal clearly as per Rubric.
-    -->
     <title>Study Time vs. Delayed Recall Analysis - Limeng Yang</title>
-    
-    <!--
-        The version of D3 included in this project is the version that you must use for your term project.
-        Using local d3.min.js (v5.12) as required.
-    -->
+    <link rel="icon" href="data:,">
     <script src="d3.min.js"></script>
-
-    <!--
-        Link to the CSS file for styling.
-    -->
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 
@@ -47,10 +35,10 @@
                 </p>
             </div>
 
-            <div class="info-box">    
+<div class="info-box">    
                 <h3>Data Overview</h3>
                 <p>
-                    The data presented here was collected over a period of 4 weeks (October 1st to October 28th, 2025). 
+                    The data presented here was collected over a period of <strong>10 weeks (October 1st to December 10th, 2025)</strong>. 
                     Each data point represents a daily study session.
                 </p>
                 <ul>
@@ -59,21 +47,21 @@
                         <ul>
                             <li><strong>Study Time:</strong> Duration of the session in minutes (X-axis).</li>
                             <li><strong>Delayed Recall Score:</strong> A test score out of 15 points, taken 24 hours after studying (Y-axis).</li>
-                            <li><strong>Method:</strong> The technique used, represented by color.</li>
-                            <li><strong>Self-Rated Confidence:</strong> A score (7-8.5) representing how confident I felt, represented by <strong>circle size</strong> (larger circles = higher confidence).</li>
+                            <li><strong>Method:</strong> The technique used, represented by color (4 categories).</li>
+                            <li><strong>Self-Rated Confidence:</strong> A score (7-9.0) representing how confident I felt, represented by <strong>circle size</strong>.</li>
                         </ul>
                     </li>
-                    <li><strong>Completeness:</strong> The dataset includes 28 consecutive days of records, satisfying the requirement for 4+ weeks of data.</li>
+                    <li><strong>Completeness:</strong> The dataset includes consistent daily records until the end of the term, satisfying the requirement for long-term data collection.</li>
                 </ul>
             </div>
 
             <div class="info-box">
                 <h3>Conclusion</h3>
                 <p>
-                    Based on the visualization, there appears to be a general positive correlation between study time and delayed recall score. 
-                    However, the method of study plays a significant role. "Massed Practice" data points (orange) tend to cluster lower on the Y-axis. 
-                    Additionally, larger circles (higher confidence) often correlate with higher Recall Scores, suggesting that my self-assessment of learning quality is generally accurate.
-                    "Mnemonic Imagery" (red) shows both high scores and larger circle sizes, indicating high effectiveness and confidence.
+                    Based on the visualization of the full term's data, my hypothesis is strongly supported. 
+                    <strong>"Mnemonic Imagery" (Yellow)</strong> consistently yields the highest Recall Scores (clustering at the top-left and top-center), indicating high efficiency even with moderate study time. 
+                    Conversely, <strong>"Massed Practice" (Blue)</strong> points cluster at the bottom, showing low retention rates (often below 60%) regardless of how long I studied.
+                    This suggests that the <em>method</em> of study is a more significant predictor of performance than the raw <em>duration</em> (Study Time).
                 </p>
             </div>
         </div>

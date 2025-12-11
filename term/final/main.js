@@ -1,22 +1,16 @@
-"use strict"
+"use strict";
 
 /*
-    Term Project - Draft 1
-    Author: Limeng Yang
+    Term Project - Final
+    By: Limeng Yang
     
-    Goal: Visualize the relationship between Study Time and Delayed Recall Score.
+    Goal: Visualize the relationship between Study Time and Delayed Recall Score across different study methods over a 12-week period.
     
-    Changes from Lab 9:
-    1. Loaded data asynchronously from an external JSON file (data.json) instead of a hardcoded array.
-    2. Included ALL 4 weeks of data (including Oct 28) and ALL 4 study methods to satisfy the
-       "Shows 4+ Weeks of Consistently Recorded Data" rubric requirement.
-    3. Strictly used 'let' for variables and 'function' keyword for functions (no arrow functions).
-    4. Added comprehensive comments and citations.
-
+    Data Source: 'data.json', containing records from Oct 1 to Dec 10, 2025.
+    
     Citations:
-    - D3 Scatterplot structure adapted from Lab 7 and Lab 9 solutions by Jay Taylor-Laird.
-    - d3.json pattern adapted from Class 8 slides and Term Project Framework.
-    - Axis rotation logic adapted from Lab 8 slides.
+    - Scatterplot implementation adapted from Lab 7/9 solutions by Jay Taylor-Laird.
+    - Legend logic and scale configuration adapted from Class 8 Slides.
 */
 
 /* Global Variables */
@@ -37,17 +31,15 @@ let svg; // Global variable for SVG selection
 let data; // Global variable to hold the dataset
 
 /*
-    Initialize the visualization.
-    Loads data asynchronously from "data.json".
-    cite: (Term Project Framework, main.js template)
-*/
+ * Initialize the visualization.
+ * Loads data asynchronously from "data.json".
+ * Once loaded, processes numerical values and triggers the build function.
+ */
 (function() {
-    // Using d3.json to load data. The .then() method handles the promise.
-    // Converted arrow function to regular function as per requirements.
     d3.json("data.json").then(function(loadedData) {
         data = loadedData; // Store data globally
         
-        // Convert string numbers to actual numbers if necessary (JSON numbers are usually safe, but good practice)
+        // Convert string numbers to actual numbers for calculation
         // cite: (Class_06_Slides, p. 25, "Data Types")
         for (let i = 0; i < data.length; i++) {
             data[i].studyTime = Number(data[i].studyTime);
@@ -59,31 +51,28 @@ let data; // Global variable to hold the dataset
     });
 })();
 
-/*
-    Main function to orchestrate the drawing from
-    Term Project Framework, main.js template
-*/
+/**
+ * Orchestrates the creation of the visualization elements.
+ * Calls functions to set up the SVG container and draw the chart.
+ */
 function buildVisualization() {
     createSVG();
     drawScatterplot();
 }
 
-/*
-    Creates the SVG element and background.
-    cite: (Class_01_Slides, p. 42, "Edit part2/main.js")
-*/
+/**
+ * Creates the main SVG element and appends a background rectangle.
+ * Sets up the canvas size based on global width/height variables.
+ * Returns: None
+ */
 function createSVG() {
-    // Select the div and ensure it fits the width
-    // DELETE or COMMENT OUT the line below to fix alignment:
-    // d3.select("#canvas").style("width", svgWidth + "px");
-
-    // Create the SVG element
+    // Create the SVG element attached to the #canvas div
     svg = d3.select("#canvas")
         .append("svg")
         .attr("width", svgWidth)
         .attr("height", svgHeight);
 
-    // Draw a background rectangle/border
+    // Draw a background rectangle for better visibility
     svg.append("rect")
         .attr("fill", "#FFFFF0") // Ivory background
         .attr("stroke", "black")
@@ -91,22 +80,17 @@ function createSVG() {
         .attr("height", svgHeight);
 }
 
-/*
-    Draws the scatterplot: scales, axes, dots, and legend.
-    Adapted from my Lab 9 Plot 2 code.
-*/
+/**
+ * Draws the scatterplot including scales, axes, data points, and labels.
+ * Requirements: Requires global 'data' and 'svg' variables to be populated.
+ * Parameters: None
+ * Returns: None
+ */
 function drawScatterplot() {
     
     // 1. Define Scales
     
     // Find min/max for X (Study Time)
-    // cite: (Class_08_Slides, p. 14, "Using d3 to find..._maxes")
-    // let xDomain = d3.extent(data, function(d) { return d.studyTime; });
-    
-    // // Find min/max for Y (Delayed Recall)
-    // let yDomain = d3.extent(data, function(d) { return d.delayedRecallScore; });
-    
-// Find min/max for X (Study Time) == (18, 33)
     // cite: (Class_08_Slides, p. 14, "Using d3 to find..._maxes")
     let xDomain = d3.extent(data, function(d) { return d.studyTime; });
     
@@ -116,23 +100,22 @@ function drawScatterplot() {
     // Find min/max for r (Self Rated Confidence)
     let rDomain = d3.extent(data, function(d) { return d.confidence; });
 
-    // X Scale: Linear
-    // cite: (Lab_07_Slides, p. 3, "review: d3.scaleLinear()")
+    // X Scale: Linear mapping of study time to chart width
     let xScale = d3.scaleLinear()
-        .domain([xDomain[0] - 5, xDomain[1] + 10]) // Add some padding
+        .domain([xDomain[0] - 1, xDomain[1]]) // Added padding for better visualization
         .range([margin.left, chartWidth + margin.left]);
 
-    // Y Scale: Linear (Inverted for SVG)
+    // Y Scale: Linear mapping of recall score to chart height (inverted)
     let yScale = d3.scaleLinear()
-        .domain([yDomain[0] - 1, yDomain[1] + 1]) // Fixed domain for better context
+        .domain([yDomain[0] - 1, yDomain[1] + 1]) 
         .range([chartHeight + margin.top, margin.top]);
     
-    // The higher confidence, the bigger the cicle is
+    // Radius Scale: Linear mapping of confidence to circle size
     let rScale = d3.scaleLinear()
         .domain(rDomain)
-        .range([rDomain[0] - 1, rDomain[1] + 12]);
+        .range([3, 24]); // Adjusted range to ensure minimum visibility
 
-    // Color Scale: Ordinal for Methods
+    // Color Scale: Ordinal mapping for the four study methods
     // cite: (Lab_08_Slides, p. 18, "scalePoint() can help!")
     let methodCategories = [
         "spaced repetition", 
@@ -143,24 +126,21 @@ function drawScatterplot() {
     
     let colorScale = d3.scaleOrdinal()
         .domain(methodCategories)
-        .range(["rgba(180, 8, 8, 1)",
-                "rgba(29, 4, 152, 1)",
-                "rgba(30, 170, 198, 1)",
-                "rgba(235, 233, 67, 1)"]);
-        // Use 4 different colors to show different methods
+        .range(["rgba(180, 8, 8, 1)",    // Red
+                "rgba(29, 4, 152, 1)",    // Blue
+                "rgba(30, 170, 198, 1)",  // Teal
+                "rgba(235, 233, 67, 1)"]); // Yellow
 
     // 2. Draw Axes
-    // Define Axis Generators
-    // cite: (Class_09_Slides, p. 18, "d3.axisBottom")
     let xAxis = d3.axisBottom(xScale);
     let yAxis = d3.axisLeft(yScale);
 
-    // Draw X Axis
+    // Append X Axis
     svg.append("g")
         .attr("transform", "translate(0, " + (chartHeight + margin.top) + ")")
         .call(xAxis);
 
-    // Draw Y Axis
+    // Append Y Axis
     svg.append("g")
         .attr("transform", "translate(" + margin.left + ", 0)")
         .call(yAxis);
@@ -171,7 +151,7 @@ function drawScatterplot() {
         .attr("x", margin.left + chartWidth / 2)
         .attr("y", svgHeight - margin.bottom / 3)
         .attr("text-anchor", "middle")
-        .attr("class", "axisLabel") // Used class from CSS
+        .attr("class", "axisLabel")
         .style("font-size", "14px")
         .text("Study Time (minutes)");
 
@@ -184,22 +164,20 @@ function drawScatterplot() {
         .attr("class", "axisLabel")
         .style("font-size", "14px")
         .attr("transform", "rotate(-90)")
-        .text("Delayed Recall Score (6-13)");
+        .text("Delayed Recall Score (0-15)");
 
     // 4. Draw Data Points (Circles)
-    
-    // Data Join
-    // cite: (Class_09_Slides, p. 26, "Assign a unique class")
+    // Map each data point to a circle element
     let circles = svg.selectAll("circle.datapoint")
         .data(data)
         .join("circle")
         .classed("datapoint", true);
 
-    // Set Attributes
+    // Set Attributes for each circle
     circles
         .attr("r", function(d) {
             return rScale(d.confidence);
-        }) // Modify radius
+        }) 
         .attr("cx", function(d) {
             return xScale(d.studyTime);
         })
@@ -207,22 +185,20 @@ function drawScatterplot() {
             return yScale(d.delayedRecallScore);
         })
         .attr("fill", function(d) {
-            // Color based on method, size based on confidence
-            // cite: (Lab_07_Slides, p. 17, "Color-coding")
+            // Color is determined by the study method
             return colorScale(d.method);
         })
         .attr("fill-opacity", 0.7)
-        .attr("stroke-width", 1);
+        // Add a simple tooltip title
+        .append("title") 
+        .text(function(d) {
+            return d.method + "\nDate: " + d.date + "\nScore: " + d.delayedRecallScore;
+        });
 
     // 5. Draw Legend (Key)
-    // cite: (Lab_07_Slides, p. 24, "Array-based solution")
     drawLegend(methodCategories, colorScale, rScale);
 }
 
-/*
-    Helper function to draw the legend.
-    Separated for cleaner code organization.
-*/
 function drawLegend(categories, colorScale, rScale) {
     let legendX = margin.left + chartWidth + 20;
     let legendY = margin.top;
@@ -231,8 +207,9 @@ function drawLegend(categories, colorScale, rScale) {
     let boxHeight = 6 * legendSpacing; 
     let boxWidth = 160;
 
-    svg.append("rect") // Legend for Method
-        .attr("x", legendX - 10) // leave padding
+    // Draw Legend Box for Study Methods
+    svg.append("rect") 
+        .attr("x", legendX - 10) 
         .attr("y", legendY - 23) 
         .attr("width", boxWidth)
         .attr("height", boxHeight)
@@ -240,16 +217,17 @@ function drawLegend(categories, colorScale, rScale) {
         .attr("stroke", "black")
         .attr("stroke-width", 1);
 
-        svg.append("rect") // Legend for Confidence
-        .attr("x", legendX - 34)
-        .attr("y", legendY + 150) 
-        .attr("width", boxWidth + 25)
-        .attr("height", boxHeight + 40)
+    // Draw Legend Box for Confidence
+    svg.append("rect") 
+        .attr("x", legendX + 25)
+        .attr("y", legendY + 145) 
+        .attr("width", boxWidth - 40)
+        .attr("height", boxHeight + 55)
         .attr("fill", "white")
         .attr("stroke", "black")
         .attr("stroke-width", 1);
 
-    // Title
+    // Title: Study Method
     svg.append("text")
         .attr("x", legendX)
         .attr("y", legendY)
@@ -257,8 +235,7 @@ function drawLegend(categories, colorScale, rScale) {
         .style("font-family", "sans-serif")
         .text("Study Method");
 
-    // Loop through categories to draw colored dots and text
-    // cite: (Lab_05_Slides, p. 17, "for loop")
+    // Loop through categories to draw colored dots and text for Method Legend
     for (let i = 0; i < categories.length; i++) {
         let category = categories[i];
         let itemY = legendY + 30 + (i * legendSpacing);
@@ -273,43 +250,42 @@ function drawLegend(categories, colorScale, rScale) {
         // Text Label
         svg.append("text")
             .attr("x", legendX + 25)
-            .attr("y", itemY + 4) // Vertical alignment adjustment
+            .attr("y", itemY + 4)
             .style("font-family", "sans-serif")
             .style("font-size", "12px")
             .text(category);
     }
 
-
-    // Make the second legend for Confidence
+    // Title: Confidence
     let sizeLegendStartY = legendY + 30 + (categories.length * legendSpacing) + 20;
 
-        svg.append("text")
-        .attr("x", legendX - 25)
+    svg.append("text")
+        .attr("x", legendX + 40)
         .attr("y", sizeLegendStartY + 20)
         .attr("font-weight", "bold")
         .style("font-family", "sans-serif")
-        .text("Self-rated Confidence");
+        .text("Confidence");
 
-        // Define several example values to illustrate size (e.g., 7, 7.5, 8)
-        // These values should correspond to the confidence ranges in data.json
-        let sizeExamples = [7, 7.5, 8, 8.5];
+    // Define example sizes to display in the legend
+    let sizeExamples = [7, 7.5, 8, 8.5]; // Updated to reflect new data range
 
-        for (let j = 0; j < sizeExamples.length; j++){
-            let circleSizeexample = sizeExamples[j]
-            //calculate y coordinates for each row
-            let itemY = sizeLegendStartY + 50 + (j * legendSpacing * 1.5);
-            svg.append("circle")
-            .attr("cx", legendX + 5)
+    // Loop to draw size examples
+    for (let j = 0; j < sizeExamples.length; j++){
+        let circleSizeexample = sizeExamples[j];
+        let itemY = sizeLegendStartY + 50 + (j * legendSpacing * 1.6);
+        
+        svg.append("circle")
+            .attr("cx", legendX + 60)
             .attr("cy", itemY)
             .attr("r", rScale(circleSizeexample)) 
-            .attr("fill", "grey") 
+            .attr("fill", "grey");
 
         // Text Label
         svg.append("text")
-            .attr("x", legendX + 30)
+            .attr("x", legendX + 90)
             .attr("y", itemY + 4)
             .style("font-family", "sans-serif")
             .style("font-size", "12px")
-            .text(circleSizeexample); // show the text of strings of the array
-        }
+            .text(circleSizeexample); 
+    }
 }
